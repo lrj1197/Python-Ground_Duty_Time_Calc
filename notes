@@ -1,0 +1,62 @@
+
+
+cd /~/ljameson/Documents/DHMC_Time_Calc
+git remote add origin git@github.com/lrj1197/DHMC_Duty_Time_Calculator.git
+git push -u origin master
+
+
+
+
+so i need to not only look at the starting loc but every loc, and get the time whether its a calc by lat/long or get time from
+sheet, I have to split along the : and put everything into hrs, then add them all up and add in the pick up/drop off times and stuff
+
+
+
+
+
+
+lon1 = radians(self.df[self.df['Location'] == self.start_loc.currentText()]['long'])
+      lon2 = radians(self.df[self.df['Location'] == self.end_loc.currentText()]['long'])
+      lat1 = radians(self.df[self.df['Location'] == self.start_loc.currentText()]['lat'])
+      lat2 = radians(self.df[self.df['Location'] == self.end_loc.currentText()]['lat'])
+      dlon = lon2 - lon1
+      dlat = lat2 - lat1
+      a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
+      c = 2 * asin(sqrt(a))
+      # Radius of earth in kilometers. Use 3956 for miles
+      r = 3956
+      v = 125*1.15
+      # calculate the result
+      take_off_landing_t = 6/60
+
+      total_travel_time = round((c * r/v))
+
+       + take_off_landing_t + self.dur,3
+      current_date_and_time = datetime.datetime.now()
+      hours_added = datetime.timedelta(hours = total_travel_time)
+      est_end_time = current_date_and_time + hours_added
+
+
+      """
+            if in master chart log
+                pass
+            else
+                on calculate take the starting destination and
+                calculate the distance between points n0 and n1
+                then look at the distance between n1 and n2.
+                repeat i times, then get distance from ni to n0
+            if i > 3
+                if air
+                    add 30 min
+                if ground
+                    add 15 min
+            else
+                pass
+            most complicated travel
+            leb to berlin to manch (fuel sstop) to boston to leb
+
+
+            i double counting the down time in MHT as both a fuel stop and a patient drop off
+            on legs more then 3 subtract off a the time added for trans type before looping
+
+            """
