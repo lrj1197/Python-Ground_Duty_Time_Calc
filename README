@@ -1,0 +1,18 @@
+Author: Lucas Jameson
+Release Date: 5/30/2020
+Purpose: The purpose of this Dartmouth-Hitchcock Advanced Response Team a
+calculator for determining duration of operations based on their travel and the
+type of operation.
+About: To use this tool, start by opening the tool.
+Then begin by filling out the information in the drop-down menus.
+the starting location is the base where the crew is starting from (LEB, MHT, UVM)
+use the destination drop-down menu to add in the different legs of the journey
+use the transportation type drop-down menu to select the corresponding operation for that leg
+select the transportation type (Air or Ground)
+If the transportation type is Air, please specify the Flight rules by checking VFR or IFR
+Press calculate.
+If the transportation type is Ground enter in the time for the complete round trip gathered from google maps
+into the text box. Press enter of press the "OK" box.
+The Calculator will display the total time the mission will take and the estimated time of return.
+Reporting bugs: If a bug is discovered please email the developer at lrj1000@wildcats.unh.edu
+or call 603-667-0568 and specify the issue
