@@ -142,7 +142,7 @@ class Main_Win(QWidget):
 
         self.setGeometry(100, 100, 800, 600)
         self.setWindowTitle('DHMC Duty Time Calculator')
-        # webbrowser.open('https://www.google.com/maps/', new=2)
+        webbrowser.open('https://www.google.com/maps/', new=2)
         self.setStyleSheet('color: rgb(250,250,250); background-color: rgb(77,77,77);')
         self.show()
 
