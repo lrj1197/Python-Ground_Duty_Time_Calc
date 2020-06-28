@@ -19,8 +19,8 @@ class Main_Win(QWidget):
                                 'ICN Drop Off':90/60,
                                 'Scene':60/60,
                                 'IFT':30/60,
-                                'Paitent Drop Off':30/60,
-                                'Paitent Pick Up':30/60,
+                                'Patient Drop Off':30/60,
+                                'Patient Pick Up':30/60,
                                 'Fuel Stop':0,
                                 'RTB':0}
         try:
@@ -30,6 +30,39 @@ class Main_Win(QWidget):
             exc_type, exc_obj, tb = sys.exc_info()
             error_dialog = QErrorMessage()
             error_dialog.showMessage('ERROR: {} on line {}'.format(e, tb.tb_lineno))
+
+        # if (1): # add in tool bar
+        #     exitAct = QAction('&Exit', self)
+        #     exitAct.setShortcut('Ctrl+Q')
+        #     exitAct.setStatusTip('Exit application')
+        #     exitAct.triggered.connect(self.EXIT)
+        #
+        #     saveAct = QAction('&Save', self)
+        #     saveAct.setShortcut('Ctrl+S')
+        #     saveAct.setStatusTip('Save')
+        #     saveAct.triggered.connect(self.save)
+        #
+        #     preferencesAct = QAction('&Preferences', self)
+        #     preferencesAct.setShortcut('Ctrl+,')
+        #     preferencesAct.setStatusTip('Open the Preferences window')
+        #     preferencesAct.triggered.connect(self.preferences)
+        #
+        #     aboutAct = QAction('&About', self)
+        #     aboutAct.setShortcut('Ctrl+A')
+        #     aboutAct.setStatusTip('About the program')
+        #     aboutAct.triggered.connect(self.about)
+        #
+        #     self.statusBar()
+        #
+        #     menubar = self.menuBar()
+        #     fileMenu = menubar.addMenu('&File')
+        #     aboutMenu = menubar.addMenu('&Help')
+        #     aboutMenu.addAction(aboutAct)
+        #     fileMenu.addAction(exitAct)
+        #     fileMenu.addAction(saveAct)
+        #     fileMenu.addAction(preferencesAct)
+
+
         if (1):
             self.calc = QPushButton('Calculate', self)
             self.calc.setCheckable(True)
@@ -117,6 +150,9 @@ class Main_Win(QWidget):
             self.ifr = QCheckBox("IFR",self)
             self.ifr.move(230, 100)
 
+            self.srp = QCheckBox("SRP",self)
+            self.srp.move(130, 140)
+
             self.vfr = QCheckBox("VFR",self)
             self.vfr.move(230, 140)
 
@@ -142,7 +178,7 @@ class Main_Win(QWidget):
 
         self.setGeometry(100, 100, 800, 600)
         self.setWindowTitle('DHMC Duty Time Calculator')
-        webbrowser.open('https://www.google.com/maps/', new=2)
+        # webbrowser.open('https://www.google.com/maps/', new=2)
         self.setStyleSheet('color: rgb(250,250,250); background-color: rgb(77,77,77);')
         self.show()
 
@@ -218,6 +254,8 @@ class Main_Win(QWidget):
                      self.dur += 10/60
                 elif self.ifr.isChecked() == False and self.vfr.isChecked() == False:
                      self.dur += 0
+                if self.srp.isChecked() == True:
+                    self.dur += 1
                 else:
                     self.msg.append("Error 1")
                 for i in range(len(destinations.split('\n'))):
@@ -352,6 +390,13 @@ class Main_Win(QWidget):
         self.start_loc.setCurrentText("Start")
         self.leg_0 = 1
         self.leg_1 = 1
+
+    def save(self):
+        print("save")
+    def about(self):
+        print("about")
+    def preferences(self):
+        print("settings")
 
 class GroundTravelTimeDialog(QDialog):
 

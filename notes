@@ -2,3 +2,14 @@ so i need to not only look at the starting loc but every loc, and get the time w
 sheet, I have to split along the : and put everything into hrs, then add them all up and add in the pick up/drop off times and stuff
 
 add messages to msg box
+
+Thoughts for version 0.0.1
+  - add in google maps API
+  - add in air calculations just because
+  - add entries to table so if repeated, pull from that table
+  - add about widget tool in tool bar
+  - add preferences widget tool to tool bar
+  - add a file tool and add save feature, edit feature, exit feature
+    - put to QMainWindow, and adjust widgets positioning
+    - comment the tool bar feature
+    - build windows for help and settings
